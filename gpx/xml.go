@@ -17,8 +17,6 @@ import (
 	"golang.org/x/net/html/charset"
 )
 
-var XmlStrict = true
-
 const formattingTimelayout = "2006-01-02T15:04:05Z"
 
 // parsingTimelayouts defines a list of possible time formats
@@ -208,7 +206,7 @@ func Parse(inReader io.Reader) (*GPX, error) {
 
 	reader := io.MultiReader(bytes.NewReader(buf), inReader)
 	decoder := xml.NewDecoder(reader)
-	decoder.Strict = XmlStrict
+	decoder.Strict = false
 	decoder.CharsetReader = charset.NewReaderLabel
 
 	return ParseDecoder(decoder, buf)
