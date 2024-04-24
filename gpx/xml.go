@@ -141,7 +141,7 @@ func formatGPXTime(time *time.Time) string {
 		// Invalid date:
 		return ""
 	}
-	return time.Format(formattingTimelayout)
+	return time.Format("2006-01-02T15:04:05.000Z")
 }
 
 // ParseFile parses a gpx file and returns a GPX object
