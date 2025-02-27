@@ -653,6 +653,7 @@ type Point struct {
 	Latitude  float64
 	Longitude float64
 	Elevation NullableFloat64
+	Speed     NullableFloat64
 }
 
 func (pt Point) Add(latDelta, lonDelta, eleDelta float64) Point {

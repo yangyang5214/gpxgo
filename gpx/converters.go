@@ -220,6 +220,9 @@ func convertPointToGpx10(original *GPXPoint) *gpx10GpxPoint {
 	result.Lat = formattedFloat(original.Latitude)
 	result.Lon = formattedFloat(original.Longitude)
 	result.Ele = original.Elevation
+	if original.Speed.NotNull() {
+		result.Speed = fmt.Sprintf("%x", original.Speed.Value())
+	}
 	result.Timestamp = formatGPXTime(&original.Timestamp)
 	result.MagVar = original.MagneticVariation
 	result.GeoIdHeight = original.GeoidHeight
@@ -655,6 +658,7 @@ func convertPointToGpx11(original *GPXPoint) *gpx11GpxPoint {
 	result.Lat = formattedFloat(original.Latitude)
 	result.Lon = formattedFloat(original.Longitude)
 	result.Ele = original.Elevation
+	result.Speed = original.Speed
 	result.Timestamp = formatGPXTime(&original.Timestamp)
 	result.MagVar = original.MagneticVariation
 	result.GeoIdHeight = original.GeoidHeight
@@ -700,6 +704,7 @@ func convertPointFromGpx11(original *gpx11GpxPoint) *GPXPoint {
 	result.Latitude = float64(original.Lat)
 	result.Longitude = float64(original.Lon)
 	result.Elevation = original.Ele
+	result.Speed = original.Speed
 	time, _ := parseGPXTime(original.Timestamp)
 	if time != nil {
 		result.Timestamp = *time

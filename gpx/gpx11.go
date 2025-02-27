@@ -227,6 +227,7 @@ type gpx11GpxPoint struct {
 	Lon formattedFloat `xml:"lon,attr"`
 	// Position info
 	Ele         NullableFloat64 `xml:"ele,omitempty"`
+	Speed       NullableFloat64 `xml:"speed,omitempty"`
 	Timestamp   string          `xml:"time,omitempty"`
 	MagVar      string          `xml:"magvar,omitempty"`
 	GeoIdHeight string          `xml:"geoidheight,omitempty"`
